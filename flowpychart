@@ -1,0 +1,1032 @@
+import subprocess
+from tkinter import *
+from tkinter import messagebox
+from tkinter.filedialog import asksaveasfilename
+import random
+import time
+import tkinter.messagebox
+import customtkinter
+
+path=''
+
+
+
+customtkinter.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
+customtkinter.set_default_color_theme("green")  # Themes: "blue" (standard), "green", "dark-blue"
+
+bully_fixx=True
+
+
+aa1, aa2, aa3, aa4, aa5, aa6, aa7 = '', '', '', '', '', '', ''
+lol1, lol2, lol3, lol4, lol5, lol6, lol7, lol10 = '', '', '', '', '', '', '', ''
+Second_time = False
+des_pressed = False
+delay_pressed=False
+end_pressed=False
+
+
+n=0
+cant_have_if=False
+
+For_number=1
+
+next_line=0
+
+
+def drag_start(event):
+    global widget
+    widget = event.widget
+    widget.startx = event.x
+    widget.starty = event.y
+
+
+def drag_motion(event):
+    global widget
+    widget = event.widget
+    x = widget.winfo_x() - widget.startx + event.x
+    y = widget.winfo_y() - widget.starty + event.y
+    if x < 17:
+        x = 17
+    if y < 16:
+        y = 16
+    if x > 1280:
+        x = 1280
+    if y < 0:
+        y = 0
+    if y > 640:
+        y = 640
+    widget.place(x=x, y=y)
+
+
+# -------------------------------------------------nothing
+
+
+# ------------------------------------botton functions
+
+def Create_shape():
+    global b1_pressed, b2_pressed, b3_pressed, b4_pressed, b5_pressed, b6_pressed, b7_pressed, b8_can, des_pressed, b10_pressed
+    b1_pressed = True
+    b2_pressed = False
+    b3_pressed = False
+    b4_pressed = False
+    b5_pressed = False
+    b6_pressed = False
+    b7_pressed = False
+    b8_can = True
+    b10_pressed = False
+
+    b1.place_forget()
+    b2.place_forget()
+    b3.place_forget()
+    b4.place_forget()
+    b10.place_forget()
+    b5.place_forget()
+    b6.place_forget()
+    b7.place_forget()
+    b8.place(relx=0.847 - 0.00494, rely=(0.697))
+
+    def des():
+        l01.destroy()
+        global lol1, des_pressed
+        lol1 = ''
+        des_pressed = True
+        Collect()
+
+    global lol1,frank
+    l01 = Label(image=image2, bg='#7FFFD4')
+    random_numberx = random.randint(250, 1000)
+    random_numbery = random.randint(0, 500)
+    l01.place(x=random_numberx, y=random_numbery)
+    l01.bind("<Button-1>", drag_start)
+    l01.bind("<B1-Motion>", drag_motion)
+    B001 = Button(l01, text='x', command=des)
+    B001.place(x=100, y=-10)
+    lol1 = Text(l01, width=10, height=2)
+    lol1.place(x=30, y=17)
+    lol1.focus()
+
+
+def If_button():
+    global b1_pressed, b2_pressed, b3_pressed, b4_pressed, b5_pressed, b6_pressed, b7_pressed, b8_can, des_pressed, b10_pressed
+    b1_pressed = False
+    b2_pressed = True
+    b3_pressed = False
+    b4_pressed = False
+    b5_pressed = False
+    b6_pressed = False
+    b7_pressed = False
+    b8_can = True
+    b10_pressed = False
+
+    b1.place_forget()
+    b2.place_forget()
+    b3.place_forget()
+    b10.place_forget()
+    b4.place_forget()
+    b5.place_forget()
+    b6.place_forget()
+    b7.place_forget()
+    b8.place(relx=0.847 - 0.00494, rely=(0.697))
+
+    def des():
+        l02.destroy()
+        global lol2, des_pressed
+        lol2 = ''
+        des_pressed = True
+        Collect()
+
+    global lol2, des_pressed
+    l02 = Label(image=If_image, bg='#7FFFD4')
+    random_numberx = random.randint(250, 1000)
+    random_numbery = random.randint(0, 500)
+    l02.place(x=random_numberx, y=random_numbery)
+    l02.bind("<Button-1>", drag_start)
+    l02.bind("<B1-Motion>", drag_motion)
+    B001 = Button(l02, text='x', command=des)
+    B001.place(x=100, y=-10)
+    lol2 = Text(l02, width=10, height=2)
+    lol2.place(x=30, y=17)
+    lol2.focus()
+
+
+def Display_button():
+    global b1_pressed, b2_pressed, b3_pressed, b4_pressed, b5_pressed, b6_pressed, b7_pressed, b8_can, des_pressed, b10_pressed
+    b1_pressed = False
+    b2_pressed = False
+    b3_pressed = True
+    b4_pressed = False
+    b5_pressed = False
+    b6_pressed = False
+    b7_pressed = False
+    b8_can = True
+    b10_pressed = False
+
+    b1.place_forget()
+    b2.place_forget()
+    b3.place_forget()
+    b10.place_forget()
+    b4.place_forget()
+    b5.place_forget()
+    b6.place_forget()
+    b7.place_forget()
+    b8.place(relx=0.847 - 0.00494, rely=(0.697))
+
+    def des1():
+        l03.destroy()
+        global lol3, des_pressed
+        lol3 = ''
+        des_pressed = True
+        Collect()
+
+    global lol3
+    l03 = Label(image=image3, bg='#7FFFD4')
+    random_numberx = random.randint(250, 1000)
+    random_numbery = random.randint(0, 500)
+    l03.place(x=random_numberx, y=random_numbery)
+    l03.bind("<Button-1>", drag_start)
+    l03.bind("<B1-Motion>", drag_motion)
+    B0012 = Button(l03, text='x', command=des1)
+    B0012.place(x=-10, y=-12)
+
+    lol3 = Text(l03, width=10, height=2)
+    lol3.place(x=41, y=15)
+    lol3.focus()
+
+
+def end_button():
+    global b1_pressed, b2_pressed, b3_pressed, b4_pressed, b5_pressed, b6_pressed, b7_pressed, b8_can, des_pressed, b10_pressed
+    b1_pressed = False
+    b2_pressed = False
+    b3_pressed = False
+    b4_pressed = True
+    b5_pressed = False
+    b6_pressed = False
+    b7_pressed = False
+    b10_pressed = False
+    b8_can = True
+    b1.place_forget()
+    b2.place_forget()
+    b10.place_forget()
+    b3.place_forget()
+    b4.place_forget()
+    b5.place_forget()
+    b6.place_forget()
+    b7.place_forget()
+    b8.place(relx=0.847 - 0.00494, rely=(0.697))
+    def des2():
+        l04.destroy()
+        global lol4, des_pressed
+        lol4 = ''
+        des_pressed = True
+        Collect()
+
+
+    global lol4
+
+    l04 = Label(image=image4, bg='#7FFFD4')
+    random_numberx = random.randint(250, 1000)
+    random_numbery = random.randint(0, 500)
+    l04.place(x=random_numberx, y=random_numbery)
+    l04.bind("<Button-1>", drag_start)
+    l04.bind("<B1-Motion>", drag_motion)
+    B0013 = Button(l04, text='x', command=des2)
+    B0013.place(x=68, y=-10)
+
+
+def delay_button():
+    global b1_pressed, b2_pressed, b3_pressed, b4_pressed, b5_pressed, b6_pressed, b7_pressed, b8_can, b10_pressed
+    b1_pressed = False
+    b2_pressed = False
+    b3_pressed = False
+    b4_pressed = False
+    b5_pressed = True
+    b6_pressed = False
+    b7_pressed = False
+    b10_pressed = False
+    b8_can = True
+
+    b1.place_forget()
+    b2.place_forget()
+    b10.place_forget()
+    b3.place_forget()
+    b4.place_forget()
+    b5.place_forget()
+    b6.place_forget()
+    b7.place_forget()
+    b8.place(relx=0.847 - 0.00494, rely=(0.697))
+
+    def des3():
+        l05.destroy()
+        global lol5, des_pressed
+        lol5 = ''
+        des_pressed = True
+        Collect()
+
+    global lol5
+
+    l05 = Label(image=image5, bg='#7FFFD4')
+    random_numberx = random.randint(250, 1000)
+    random_numbery = random.randint(0, 500)
+    l05.place(x=random_numberx, y=random_numbery)
+    l05.bind("<Button-1>", drag_start)
+    l05.bind("<B1-Motion>", drag_motion)
+    B0014 = Button(l05, text='x', command=des3)
+    B0014.place(x=30, y=-12)
+    lol5 = Text(l05, width=10, height=2)
+    lol5.place(x=13, y=17)
+    lol5.focus()
+
+
+def while_button():
+    global b1_pressed, b2_pressed, b3_pressed, b4_pressed, b5_pressed, b6_pressed, b7_pressed, b8_can, b10_pressed
+    b1_pressed = False
+    b2_pressed = False
+    b3_pressed = False
+    b4_pressed = False
+    b5_pressed = False
+    b6_pressed = True
+    b7_pressed = False
+    b10_pressed = False
+    b8_can = True
+
+    b1.place_forget()
+    b2.place_forget()
+    b10.place_forget()
+    b3.place_forget()
+    b4.place_forget()
+    b5.place_forget()
+    b6.place_forget()
+    b7.place_forget()
+    b8.place(relx=0.847 - 0.00494, rely=(0.697))
+
+    def des4():
+        l06.destroy()
+        global lol6, des_pressed
+        lol6 = ''
+        des_pressed = True
+        Collect()
+
+    global lol6
+
+    l06 = Label(image=image6, bg='#7FFFD4')
+    random_numberx = random.randint(250, 1000)
+    random_numbery = random.randint(0, 500)
+    l06.place(x=random_numberx, y=random_numbery)
+    l06.bind("<Button-1>", drag_start)
+    l06.bind("<B1-Motion>", drag_motion)
+    B0015 = Button(l06, text='x', command=des4)
+    B0015.place(x=100, y=0)
+    lol6 = Text(l06, width=10, height=2)
+    lol6.place(x=30, y=28)
+    lol6.focus()
+
+
+def For_button():
+    global b1_pressed, b2_pressed, b3_pressed, b4_pressed, b5_pressed, b6_pressed, b7_pressed, b8_can, b10_pressed
+    b1_pressed = False
+    b2_pressed = False
+    b3_pressed = False
+    b4_pressed = False
+    b5_pressed = False
+    b6_pressed = False
+    b7_pressed = True
+    b10_pressed = False
+    b8_can = True
+    b1.place_forget()
+    b2.place_forget()
+    b3.place_forget()
+    b4.place_forget()
+    b5.place_forget()
+    b6.place_forget()
+    b7.place_forget()
+    b10.place_forget()
+    b8.place(relx=0.847 - 0.00494, rely=(0.697))
+    def des5():
+        l07.destroy()
+        global lol7, des_pressed
+        lol7 = ''
+        des_pressed = True
+        Collect()
+
+    global lol7
+
+    l07 = Label(image=image7, bg='#7FFFD4')
+    random_numberx = random.randint(250, 1000)
+    random_numbery = random.randint(0, 500)
+    l07.place(x=random_numberx, y=random_numbery)
+    l07.bind("<Button-1>", drag_start)
+    l07.bind("<B1-Motion>", drag_motion)
+    B0016 = Button(l07, text='x', command=des5)
+    B0016.place(x=60, y=-12)
+    lol7 = Text(l07, width=14, height=2)
+    lol7.insert(1.0, 'for number'+str(For_number)+' in range()')
+    lol7.place(x=-4, y=32)
+    lol7.focus()
+
+
+def process_button():
+    global b1_pressed, b2_pressed, b3_pressed, b4_pressed, b5_pressed, b6_pressed, b7_pressed, b8_can, b10_pressed
+    b1_pressed = False
+    b2_pressed = False
+    b3_pressed = False
+    b4_pressed = False
+    b5_pressed = False
+    b6_pressed = False
+    b7_pressed = False
+    b10_pressed = True
+    b8_can = True
+
+    b1.place_forget()
+    b2.place_forget()
+    b3.place_forget()
+    b4.place_forget()
+    b5.place_forget()
+    b6.place_forget()
+    b7.place_forget()
+    b10.place_forget()
+    b8.place(relx=0.847 - 0.00494, rely=(0.697))
+
+    def des5():
+        l010.destroy()
+        global lol10, des_pressed
+        lol10 = ''
+        des_pressed = True
+        Collect()
+
+    global lol10
+
+    l010 = Label(image=image10, bg='#7FFFD4')
+    random_numberx = random.randint(250, 1000)
+    random_numbery = random.randint(0, 500)
+    l010.place(x=random_numberx, y=random_numbery)
+    l010.bind("<Button-1>", drag_start)
+    l010.bind("<B1-Motion>", drag_motion)
+    B0016 = Button(l010, text='x', command=des5)
+    B0016.place(x=100, y=0)
+    lol10 = Text(l010, width=10, height=2)
+    lol10.place(x=15, y=20)
+    lol10.focus()
+
+
+
+
+
+# ----------------------collect button
+
+
+def Collect():
+    global des_pressed,cant_have_if,delay_pressed,For_number,nnn,n,next_line,bully_fixx,end_pressed
+
+    if des_pressed == True:
+        b8.place_forget()
+        b1.place(relx=0.894, rely=0.02)
+        b2.place(relx=0.894, rely=0.0573)
+        b3.place(relx=0.894, rely=(0.0958))
+        b4.place(relx=0.894, rely=(0.003 + 3 * (0.042 - 0.003)) + 0.014)
+        b5.place(relx=0.894, rely=(0.003 + 4 * (0.042 - 0.003)) + 0.014)
+        b6.place(relx=0.894, rely=(0.003 + 5 * (0.042 - 0.003)) + 0.013)
+        b7.place(relx=0.894, rely=(0.003 + 6 * (0.042 - 0.003)) + 0.0115)
+        b10.place(relx=0.894, rely=(0.003 + 6 * (0.042 - 0.003)) + 0.0504)
+        des_pressed = False
+
+    with open("/Users/alikhodadadi/Desktop/kidsDrons/droneTextpath", "a") as text_file:
+        equal_sign = '='
+
+        if b1_pressed:
+            global n,next_line
+            e1=lol1.get(1.0,END)
+            while e1[0] == ' ':
+                e1 = e1.replace(' ', '', 1)
+
+            ha=e1
+
+
+            ok=ha.find(equal_sign)
+            if ha[0:ok].isnumeric()==True:
+                Eror = Tk()
+                Eror.title('Error')
+                Eror.resizable(False, False)
+                Eror.geometry('500x350+500+250')
+                nnl = Label(Eror, text="Variable should be a name ", foreground='red', justify=LEFT, font=("Arial", 35))
+                nnl.place(rely=0.38, relx=0.15)
+                Eror.mainloop()
+                return
+            if end_pressed==True:
+                text_file.write(next_line*'\n'+n*('    ')+ha+n*('    '))
+            elif end_pressed==False:
+                text_file.write(next_line * '\n' + ha + n * ('    '))
+
+            cant_have_if=True
+            next_line=0
+            end_pressed=False
+            nnn=n
+
+
+
+
+        if b2_pressed:
+
+
+
+            e1 = lol2.get(1.0, END)
+            while e1[0] == ' ':
+                e1 = e1.replace(' ', '', 1)
+            ha1=e1
+            equal_sign = '='
+            question = '?'
+            equal_sign_possition = (e1).find(equal_sign)
+
+            value = ha1[0:equal_sign_possition+1]
+
+            lol = ha1[equal_sign_possition+1:-1]
+
+            while e1[0]==' ':
+                e1 = e1.replace(' ','',0)
+
+
+
+            if lol[-1] == '?':
+                lol=list(lol)
+                del lol[-1]
+                lol=''.join(lol)
+
+
+
+
+            elif not lol[-1] == '?':
+                Eror = Tk()
+                Eror.title('Error')
+                Eror.resizable(False, False)
+                Eror.geometry('500x350+500+250')
+                nnl = Label(Eror, text="we need '?' ", foreground='red', justify=LEFT, font=("Arial", 35))
+                nnl.place(rely=0.38, relx=0.25)
+                Eror.mainloop()
+                return
+
+            n = n + 1
+
+
+            nnn=n
+
+
+            if e1[0:e1.find(equal_sign)].isnumeric()==True:
+                Eror = Tk()
+                Eror.title('Error')
+                Eror.resizable(False, False)
+                Eror.geometry('500x350+500+250')
+                nnl = Label(Eror, text="Variable should be a name ", foreground='red', justify=LEFT, font=("Arial", 35))
+                nnl.place(rely=0.38, relx=0.08)
+                Eror.mainloop()
+                return
+
+
+
+
+
+            text_file.write(next_line*'\n'+'if ' + ha1[0:equal_sign_possition + 1].replace(equal_sign,'==')+ lol +':' +'\n' + n*'    ')
+            cant_have_if=False
+            next_line = 0
+
+            bully_fixx=False
+
+
+
+        if b3_pressed:
+            bbb = lol3.get(1.0, END)
+            bbb=bbb.replace('\n','')
+
+            if end_pressed==True:
+                text_file.write(next_line*'\n'+n*('    ')+"print("+bbb+")"+"\n"+n*('    '))
+            else:
+                text_file.write(next_line * '\n'+"print(" + bbb + ")" + "\n" + n * ('    '))
+            cant_have_if=True
+            nnn=n
+            next_line = 0
+            end_pressed = False
+
+        if b4_pressed :
+            next_line=1
+            n=n-1
+            end_pressed=True
+
+
+        if b5_pressed:
+            l = 1
+            bbb1=lol5.get(1.0,END)
+            bbb1=bbb1.replace(' ','')
+            bbb1=bbb1.replace('\n','')
+            haya=bbb1.isnumeric()
+
+
+            if delay_pressed==True:
+                l=0
+
+            if haya==True:
+                nnn = n
+                if end_pressed==True:
+                    text_file.write(next_line*'\n'+n*('    ')+l*("import time;") +"time.sleep("+bbb1+")"+"\n"+n*('    '))
+                else:
+                    text_file.write(next_line*'\n'+l*("import time;") +"time.sleep("+bbb1+")"+"\n"+n*('    '))
+
+                delay_pressed=True
+                next_line = 0
+            else:
+                Eror = Tk()
+                Eror.title('Error')
+                Eror.resizable(False, False)
+                Eror.geometry('500x350+500+250')
+                nnl = Label(Eror, text='Please put a number', foreground='red', justify=LEFT, font=("Arial", 35))
+                nnl.place(rely=0.38, relx=0.19)
+                Eror.mainloop()
+                return
+            end_pressed = False
+            cant_have_if=True
+
+
+        if b6_pressed:
+
+
+
+
+
+            e1 = lol6.get(1.0, END)
+            while e1[0] == ' ':
+                e1 = e1.replace(' ', '', 1)
+            ha1=e1
+            equal_sign = '='
+            equal_sign_possition = (e1).find(equal_sign)
+
+            value = ha1[0:equal_sign_possition+1]
+
+            lol = ha1[equal_sign_possition+1:-1]
+
+            while e1[0]==' ':
+                e1 = e1.replace(' ','',0)
+
+
+
+            n = n + 1
+
+
+
+            nnn = n
+
+            if e1[0:e1.find(equal_sign)].isnumeric()==True:
+                Eror = Tk()
+                Eror.title('Error')
+                Eror.resizable(False, False)
+                Eror.geometry('500x350+500+250')
+                nnl = Label(Eror, text="Variable should be a name ", foreground='red', justify=LEFT, font=("Arial", 35))
+                nnl.place(rely=0.38, relx=0.08)
+                Eror.mainloop()
+                return
+
+            text_file.write(next_line*'\n'+'while ' + ha1[0:equal_sign_possition + 1].replace(equal_sign,'==')+ lol +':' +'\n' + n*'    ')
+            cant_have_if=False
+            next_line = 0
+
+
+
+
+        if b7_pressed:
+
+            e1 = lol7.get(1.0, END)
+            while e1[0] == ' ':
+                e1 = e1.replace(' ', '', 1)
+            ha1=e1
+            equal_sign = '='
+            equal_sign_possition = (e1).find(equal_sign)
+
+            value = ha1[0:equal_sign_possition+1]
+
+            lol = ha1[equal_sign_possition+1:-1]
+
+            while e1[0]==' ':
+                e1 = e1.replace(' ','',0)
+
+
+            n = n + 1
+
+
+
+            nnn = n
+
+
+
+
+            text_file.write(next_line*'\n'+ha1[0:equal_sign_possition + 1].replace(equal_sign,'==')+ lol +':' +'\n' + n*'    ')
+            cant_have_if=False
+            next_line = 0
+
+            For_number=For_number+1
+
+
+
+
+
+
+
+        if b10_pressed:
+            e1 = lol10.get(1.0, END)
+            while e1[0] == ' ':
+                e1 = e1.replace(' ', '', 1)
+
+            ha = e1
+
+            if e1[0:e1.find(equal_sign)].isnumeric()==True:
+                Eror = Tk()
+                Eror.title('Error')
+                Eror.resizable(False, False)
+                Eror.geometry('500x350+500+250')
+                nnl = Label(Eror, text="Variable should be a name ", foreground='red', justify=LEFT, font=("Arial", 35))
+                nnl.place(rely=0.38, relx=0.08)
+                Eror.mainloop()
+                return
+
+            if end_pressed:
+                text_file.write(next_line*'\n'+n*('    ')+ha+n*('    '))
+            else:
+                text_file.write(next_line*'\n'+ha+n*('    '))
+
+            nnn = n
+            cant_have_if = True
+            next_line = 0
+            end_pressed=False
+
+
+
+
+    b1.place(relx=0.894, rely=0.02)
+    b2.place(relx=0.894, rely=0.0573)
+    b3.place(relx=0.894, rely=(0.0958))
+    b4.place(relx=0.894, rely=(0.003 + 3 * (0.042 - 0.003)) + 0.014)
+    b5.place(relx=0.894, rely=(0.003 + 4 * (0.042 - 0.003)) + 0.014)
+    b6.place(relx=0.894, rely=(0.003 + 5 * (0.042 - 0.003)) + 0.013)
+    b7.place(relx=0.894, rely=(0.003 + 6 * (0.042 - 0.003)) + 0.0115)
+    b10.place(relx=0.894, rely=(0.003 + 6 * (0.042 - 0.003)) + 0.0504)
+    b8.place_forget()
+
+
+# -------------------------------------------Arrow button
+
+
+def arrow_button():
+    def des6():
+        l08.destroy()
+
+    l08 = Label(image=image8, bg='#7FFFD4')
+    random_numberx = random.randint(250, 1000)
+    random_numbery = random.randint(0, 500)
+    l08.place(x=random_numberx, y=random_numbery)
+    l08.bind("<Button-1>", drag_start)
+    l08.bind("<B1-Motion>", drag_motion)
+    B0016 = Button(l08, text='x', command=des6)
+    B0016.place(x=50, y=-12)
+
+
+
+
+
+def EExecute():
+    def exitt():
+        save_prompt.destroy()
+
+    code_output.config(state='normal')
+    code_output.delete(1.0,END)
+
+    global path
+    file = open('/Users/alikhodadadi/Desktop/kidsDrons/droneTextpath', 'r+')
+    CODE = file.readlines()
+    CODE = ''.join(CODE)
+    if path == '':
+        save_prompt=Toplevel()
+        save_prompt.geometry('520x150')
+        save_prompt.resizable(False,False)
+        b88=customtkinter.CTkButton(save_prompt,command=exitt,text='OK')
+        b88.place(rely=0.8,relx=0.37)
+        text=Label(save_prompt,text='Please save your code as script first',font=('',23))
+        text.place(relx=0.1,rely=0.3)
+        return
+    else:
+        save_script()
+
+    command=f'python {path}'
+    process=subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+    output, error = process.communicate()
+    code_output.config(state='normal')
+    code_output.insert('1.0',output)
+    code_output.insert('1.0', error)
+    code_output.config(state='disabled')
+
+
+
+
+
+
+
+
+def frank_return():
+    Eror.destroy()
+    return
+
+def frank_clear():
+    global Clear_message,label_1,ttt,tt
+    Eror.destroy()
+    file = open('/Users/alikhodadadi/Desktop/kidsDrons/droneTextpath', 'r+')
+    CODEe = file.readlines()
+    file.truncate(0)
+    file.close()
+
+    def dest():
+        boby.destroy()
+    boby=Tk()
+    boby.title('')
+    boby.resizable(False,False)
+    boby.geometry('690x330+350+250')
+    tt = Label(boby, font=('', 40), text='''Every thing Cleared, please
+ delete unnecessary widgets!''')
+
+
+
+    tt.place(relx=0.13, rely=0.3)
+    bo=customtkinter.CTkButton(boby,command=dest,text='OK')
+    bo.place(relx=0.4, rely=0.85)
+
+
+
+
+    boby.mainloop()
+
+
+    ##################doesnt work
+
+
+
+
+def Frankie():
+    global widget,cant_have_if,frank,Eror
+    Eror = Tk()
+    Eror.title('')
+    Eror.resizable(False, False)
+    Eror.geometry('500x350+500+250')
+    nnl = Label(Eror, text="Are you sure you want to clear?", foreground='red', justify=LEFT, font=("Arial", 35))
+    nnl.place(rely=0.38, relx=0.005)
+    bb=customtkinter.CTkButton(Eror,text='Yes',width=1,fg_color='#F98167',command=frank_clear)
+    bb.place(relx=0.4,rely=0.8)
+    bb2 = customtkinter.CTkButton(Eror, text=' No ',width=1,command=frank_return)
+    bb2.place(relx=0.5,rely=0.8)
+
+    Eror.mainloop()
+    return
+
+
+
+def exit():
+    Bob.destroy()
+
+
+
+def save_script():
+    global path
+    if path == '':
+        path = asksaveasfilename(filetypes=[('Python files','*.py')])
+    else:
+        None
+    file = open('/Users/alikhodadadi/Desktop/kidsDrons/droneTextpath', 'r+')
+    cc=file.readlines()
+    cc=''.join(cc)
+    with open(path,'w') as filee:
+        filee.write(cc)
+
+
+def on_closing():
+    answer=messagebox.askyesnocancel("quit","Do you want to save?",parent=Bob)
+    if answer is not None:
+        if answer:
+            save_script()
+        Bob.destroy()
+        
+
+
+
+
+# ----------------------Bob stuff
+Bob = Tk()
+Bob_frame = customtkinter.CTkFrame(master=Bob, fg_color='#66CDAA', corner_radius=0)
+Bob_frame.pack()
+
+
+menu_bar=Menu(Bob)
+file_bar=Menu(menu_bar)
+file_bar.add_command(label='Run',command=EExecute)
+file_bar.add_command(label='Clear',command=Frankie)
+file_bar.add_command(label='Save as python script',command=save_script)
+file_bar.add_command(label='Save',command=save_script)
+
+
+
+
+menu_bar.add_cascade(label='Menu',menu=file_bar)
+
+
+Bob.config(menu=menu_bar)
+
+
+label_1 = customtkinter.CTkFrame(master=Bob_frame, fg_color='#7FFFD4')
+label_1.grid(row=0, column=0, pady=15, padx=15)
+label_mode = customtkinter.CTkLabel(master=label_1, text="")
+label_mode.grid(row=9, column=0, pady=352, padx=636, )
+label_mode = customtkinter.CTkLabel(master=label_1, text="")
+label_mode.grid(row=9, column=0, pady=327, padx=20)
+label_mode = customtkinter.CTkLabel(master=Bob_frame, text="")
+label_mode.grid(row=9, column=0, pady=300, padx=500)
+Bob.title('FloPy')
+Bob.geometry("5000x5000")
+Bob.configure(bg='#7FFFD4')
+If_image = PhotoImage(file="/Users/alikhodadadi/Desktop/kidsDrons/diamond.png").subsample(12, 12)
+image1 = PhotoImage(file="/Users/alikhodadadi/Desktop/kidsDrons/StartFlowchart-1.png").subsample(2, 2)
+image2 = PhotoImage(file="/Users/alikhodadadi/Desktop/kidsDrons/input.gif").subsample(6, 6)
+image3 = PhotoImage(file="/Users/alikhodadadi/Desktop/kidsDrons/display.gif").subsample(5, 5)
+image4 = PhotoImage(file="/Users/alikhodadadi/Desktop/kidsDrons/end.gif").subsample(5, 5)
+image5 = PhotoImage(file="/Users/alikhodadadi/Desktop/kidsDrons/delay.gif").subsample(4, 4)
+image6 = PhotoImage(file="/Users/alikhodadadi/Desktop/kidsDrons/while.gif").subsample(9, 9)
+image7 = PhotoImage(file="/Users/alikhodadadi/Desktop/kidsDrons/For.png").subsample(11, 11)
+
+image8 = PhotoImage(file="/Users/alikhodadadi/Desktop/kidsDrons/arrow.png").subsample(11, 11)
+image9 = PhotoImage(file="/Users/alikhodadadi/Desktop/kidsDrons/Run.png").subsample(10, 10)
+image10 = PhotoImage(file="/Users/alikhodadadi/Desktop/kidsDrons/process.png").subsample(5, 5)
+
+l1 = Label(image=image1, bg='#7FFFD4')
+l1.place(x=20, y=20)
+
+l12 = customtkinter.CTkButton(Bob, image=image9, fg_color='#7FFFD4', text='', width=1, command=EExecute)
+l12.place(x=0, y=0)
+
+l1.bind("<Button-1>", drag_start)
+l1.bind("<B1-Motion>", drag_motion)
+
+b1 = customtkinter.CTkButton(Bob, text='Input Button', command=Create_shape, fg_color='#ecdfab')
+b1.place(relx=0.894, rely=0.02)
+
+b2 = customtkinter.CTkButton(Bob, text='If button', command=If_button, fg_color='#52c59a')
+b2.place(relx=0.894, rely=0.0573)
+
+b3 = customtkinter.CTkButton(Bob, text='Display button', command=Display_button, fg_color='#3ab54a')
+b3.place(relx=0.894, rely=(0.0958))
+
+b4 = customtkinter.CTkButton(Bob, text='End button', command=end_button, fg_color='#588eca')
+b4.place(relx=0.894, rely=(0.003 + 3 * (0.042 - 0.003)) + 0.014)
+
+b5 = customtkinter.CTkButton(Bob, text='Delay Button', command=delay_button, fg_color='#ef425e')
+b5.place(relx=0.894, rely=(0.003 + 4 * (0.042 - 0.003)) + 0.014)
+
+b6 = customtkinter.CTkButton(Bob, text='While Button', command=while_button, fg_color='#2eecd3')
+b6.place(relx=0.894, rely=(0.003 + 5 * (0.042 - 0.003)) + 0.013)
+
+b7 = customtkinter.CTkButton(Bob, text='For Button', command=For_button, fg_color='cyan')
+b7.place(relx=0.894, rely=(0.003 + 6 * (0.042 - 0.003)) + 0.0115)
+
+tick_image = PhotoImage(file='/Users/alikhodadadi/Desktop/kidsDrons/tick_box.png').subsample(2, 2)
+
+b10 = customtkinter.CTkButton(Bob, text='Process Button', command=process_button, fg_color='#f0880a')
+b10.place(relx=0.894, rely=(0.003 + 6 * (0.042 - 0.003)) + 0.0504)
+
+b8 = customtkinter.CTkButton(Bob, text='', command=Collect, image=tick_image, fg_color="white", border=1)
+b8.place(relx=0.847 - 0.00494, rely=0.697)
+b8.place_forget()
+
+b9 = customtkinter.CTkButton(Bob, text='Arrow Button', command=arrow_button, fg_color='white')
+b9.place(relx=0.894, rely=(-0.06 + 12 * (0.042 - 0.003)))
+
+
+b9 = customtkinter.CTkButton(Bob, text='Clear', command=Frankie, fg_color='red')
+b9.place(relx=0.894, rely=(0.003 + 12 * (0.042 - 0.003)) + 0.113)
+
+
+
+
+
+code_output=Text(Bob_frame,height=10.3,width=204,bg='#7FFFD4')
+code_output.config(state='disabled')
+code_output.place(rely=0.8328,relx=0.0013)
+
+
+
+Bob.protocol("WM_DELETE_WINDOW", on_closing)
+
+
+Bob.update()
+
+Bob.mainloop()
+
+
+
+
+
+
+
+#make process button for continue if
+
+
+
+
+##########################################################################################
+##########################################################################################
+##########################################################################################
+##########################################################################################
+##########################################################################################
+##########################################################################################
+##########################################################################################
+############################################################-----#########################
+#####################################-----------------####----------######################
+################################----o#################W----########-######################
+############################----###########################---WWWW#-o#####################
+##########################---################################---WW#--#####################
+########################--#####################################--o#--#####################
+######################--#########################################----#####################
+#####################--###########################################---#####################
+####################-#############################################o-######################
+###############------###########W##################################--#####################
+############---#####################################################-o####################
+##########--o####WW##################################################-####################
+#########--###WWWW#W##################################################-o##################
+########--##WWWWWWW###################################################--##################
+#########--#WWWWWW#####################################################-##################
+##########--#WWWWWW####################################################-##################
+###########--##WWW###########################################-----#####--#################
+############---##W###########################################-----######--################
+##############---#########################-----##########o####---########-################
+##############--#W########################-----####-##-#--###############-################
+##############W-##########################----W##########################-################
+###############-#########################################################-################
+###############--#######################################################o-################
+###############--###########################################WWWWWWWWW##---W###############
+################--############################WWWWWWWWWWW#WWWWWWWW####-###W--#############
+################W-##########################WWWWWWWWWWWWWWWWWWWWW####--#####--############
+#################--#######################WWWWWW######WWWWWWWWW####W##--#####-############
+##################--#####################WWWWWW########################------W############
+####################--#################WWWWWWWW####W######WW#########W######W#############
+#####################---##############WWWWWWW###########W##W#######W##########W###########
+########################-----------###WWWWWW############W################W####WW##########
+##########################--#########---------####W-##-W######WW###WW##########W##########
+#########################--##################--###################W############W##########
+########################--###################--#################################W#########
+#######################--##################---#####################WWW##########WW########
+###############--######-##########---------###########WWW##########WWW#WWWW######W########
+##############-##--###--###########WWWWWWW############WWW###WWWWW##WWW#WWWW##W###W########
+##############-###--##-############WWWWWWW#########WW#WWW####W#W########WW###W##W#########
+##############-W###----############WWWWWWWW####W##WWWW#######W#W################W#########
+###############-#####-##############WWWWWWWW######WWW########WWW################W#########
+################--###-##############WWWWWWWW###W##############W#################W#########
+#################--##-W#############WWWWWWWW###W#########################W####WW##########
+###################----##############WWWWWWW#################################W############
+######################-W#############o-----WW######W#########################W############
+#######################-W##################--WWW############################WW############
+########################--###################-WWW##########################WW#############
+##########################--o################-WWWW######################WW################
+############################W-----o########--oWWWWWWWW################WW##################
+###################################--------######WWWWWWWWWWWWWWWWWW#######################
+##########################################################################################
+##########################################################################################
+##########################################################################################
+##########################################################################################
